@@ -1,26 +1,19 @@
 package com.bootcamp.melifrescos.service;
 
 import com.bootcamp.melifrescos.dto.PurchaseOrderEmailDTO;
-import com.bootcamp.melifrescos.dto.PurchaseProductDTO;
 import com.bootcamp.melifrescos.enums.EmailStatus;
 import com.bootcamp.melifrescos.enums.OrderStatus;
 import com.bootcamp.melifrescos.interfaces.IEmailService;
 import com.bootcamp.melifrescos.model.Email;
-import com.bootcamp.melifrescos.model.PurchaseOrder;
 import com.bootcamp.melifrescos.repository.IEmailRepo;
 import com.bootcamp.melifrescos.repository.IProductPurchaseOrderRepo;
-import com.bootcamp.melifrescos.repository.IPurchaseOrderRepo;
 import lombok.RequiredArgsConstructor;
-
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
-
-import java.time.Duration;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -30,7 +23,6 @@ public class EmailService implements IEmailService {
 
     private final IEmailRepo repo;
     private final IProductPurchaseOrderRepo ppoRepo;
-    private final IPurchaseOrderRepo poRepo;
 
     private final JavaMailSender emailSender;
 
@@ -58,11 +50,10 @@ public class EmailService implements IEmailService {
         return repo.save(email);
     }
 
-
     /**
-     * Get all the purchase orders that have the status of OPEN.
+     * Get all the open purchase orders.
      *
-     * @return A list of all the open carts.
+     * @return A list of PurchaseOrderEmailDTO objects.
      */
     public List<PurchaseOrderEmailDTO> getOpenedCarts() {
         return ppoRepo.findAllPurchaseOrdersOpen(OrderStatus.OPEN);
