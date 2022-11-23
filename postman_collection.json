@@ -1,8 +1,9 @@
 {
 	"info": {
-		"_postman_id": "4212c24e-785b-426f-9cd8-efc131820f6c",
+		"_postman_id": "2dd33207-1928-4be5-a35f-21bd785efb65",
 		"name": "Desafio Integrador",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5079514"
 	},
 	"item": [
 		{
@@ -605,6 +606,66 @@
 									"key": "productId",
 									"value": "1"
 								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Email",
+			"item": [
+				{
+					"name": "GetOpenedCarts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/fresh-products/orders/open",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"fresh-products",
+								"orders",
+								"open"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SendEmail",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"emailFrom\": \"gsmuniz17@gmail.com\",\n    \"emailTo\": \"augusto.liberato@mercadolivre.com\",\n    \"subject\": \"Teste do Email\",\n    \"message\": \"email para testar envio com spring Mail usando smtp do gmail\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/fresh-products/orders/send-email",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"fresh-products",
+								"orders",
+								"send-email"
 							]
 						}
 					},
